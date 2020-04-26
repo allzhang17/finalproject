@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Turnip Calc</string>
+    <string name="price_purchased">price purchased</string>
+    <string name="selling_day">selling day</string>
+    <string name="selling_time">selling time</string>
+    <string name="current_pricepoint">current pricepoint</string>
+    <string name="p_m">P.M.</string>
+    <string name="a_m">A.M.</string>
+    <string name="turnip_calculator">turnip calculator</string>
+    <string name="enter_info">enter info</string>
+
+    <string-array name="select">
+        <item>monday</item>
+        <item>tuesday</item>
+        <item>wednesday</item>
+        <item>thursday</item>
+        <item>friday</item>
+        <item>saturday</item>
+    </string-array>
+</resources>
