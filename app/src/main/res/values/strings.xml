@@ -8,6 +8,7 @@
     <string name="a_m">A.M.</string>
     <string name="turnip_calculator">turnip calculator</string>
     <string name="enter_info">enter info</string>
+    <string name="submit">submit</string>
 
     <string-array name="select">
         <item>monday</item>
