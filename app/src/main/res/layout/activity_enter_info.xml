@@ -111,42 +111,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/enterCurrent"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="110dp"
-        android:layout_marginRight="110dp"
-        android:layout_marginBottom="110dp"
-        android:ems="10"
-        android:hint="@string/enter_a_number"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/currentprice" />
-
-    <EditText
-        android:id="@+id/enterPurchased"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="109dp"
-        android:layout_marginLeft="109dp"
-        android:layout_marginTop="145dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginBottom="540dp"
-        android:ems="10"
-        android:hint="@string/enter_a_number"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <CheckBox
         android:id="@+id/amCheck"
         android:layout_width="0dp"
@@ -180,5 +144,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editPurchased"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginRight="98dp"
+        android:layout_marginBottom="11dp"
+        android:ems="10"
+        android:hint="enter an integer"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/sellingday"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pricepurchased" />
+
+    <EditText
+        android:id="@+id/editCurrent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginRight="98dp"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:hint="enter an integer"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentprice" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

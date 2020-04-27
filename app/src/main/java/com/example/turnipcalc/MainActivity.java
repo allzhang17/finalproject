@@ -14,8 +14,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button enterInfo = findViewById(R.id.infoButton);
-        enterInfo.setOnClickListener(new View.OnClickListener() {
+        Button infoButton = findViewById(R.id.infoButton);
+        infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goToInfoActivity();

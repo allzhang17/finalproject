@@ -55,16 +55,23 @@ public class EnterInfoActivity extends AppCompatActivity {
                 }
             }
         });
-        purchasedInput = (EditText) findViewById(R.id.enterPurchased);
-        currentInput = (EditText) findViewById(R.id.enterCurrent);
+        purchasedInput = (EditText) findViewById(R.id.editPurchased);
+        currentInput = (EditText) findViewById(R.id.editCurrent);
         submitButton = (Button) findViewById(R.id.submit);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pricePurchased = pricePurchased;
+                pricePurchased = Integer.valueOf(purchasedInput.getText().toString());
+                currentPrice = Integer.valueOf(currentInput.getText().toString());
+
+                showToast(pricePurchased);
+                showToast(currentPrice);
             }
         });
 
 
+    }
+    private void showToast(int inputText) {
+        Toast.makeText(EnterInfoActivity.this, inputText, Toast.LENGTH_SHORT).show();
     }
 }
