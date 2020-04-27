@@ -5,14 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.CheckBox;
 import android.widget.Toast;
+import android.widget.Button;
 
 public class EnterInfoActivity extends AppCompatActivity {
 
     CheckBox am;
     CheckBox pm;
+
+    int pricePurchased, currentPrice;
+    EditText purchasedInput;
+    EditText currentInput;
+    Button submitButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +55,16 @@ public class EnterInfoActivity extends AppCompatActivity {
                 }
             }
         });
+        purchasedInput = (EditText) findViewById(R.id.enterPurchased);
+        currentInput = (EditText) findViewById(R.id.enterCurrent);
+        submitButton = (Button) findViewById(R.id.submit);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pricePurchased = pricePurchased;
+            }
+        });
+
 
     }
 }
