@@ -5,18 +5,18 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 
 
 public class MainActivity extends AppCompatActivity {
+    Button buttonInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button infoButton = (Button) findViewById(R.id.infoButton);
-        infoButton.setOnClickListener(new View.OnClickListener() {
+        buttonInfo = (Button) findViewById(R.id.infoButton);
+        buttonInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goToInfoActivity();
