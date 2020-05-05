@@ -62,7 +62,7 @@ public class EnterInfoActivity extends AppCompatActivity {
             }
         });
         purchasedInput = findViewById(R.id.editPurchased);
-        currentInput = (EditText) findViewById(R.id.editCurrent);
+        currentInput = findViewById(R.id.editCurrent);
         submitButton = (Button) findViewById(R.id.submit);
         result = findViewById(R.id.result);
 
