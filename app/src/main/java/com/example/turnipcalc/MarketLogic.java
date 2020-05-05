@@ -1,21 +1,29 @@
 package com.example.turnipcalc;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MarketLogic extends AppCompatActivity {
+public class MarketLogic extends EnterInfoActivity {
     private EditText currentSubmit;
+    private Spinner daySpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.logic_market);
         currentSubmit = findViewById(R.id.editCurrent);
+        daySpinner = findViewById(R.id.daySpinner)
         String inputNumber = currentSubmit.getText().toString();
         int finalNumber = Integer.parseInt(inputNumber);
         final int[] history;
+        final int[] AM;
+        final int[] PM;
+        AM = new int[6];
+        PM = new int[6];
         history = new int[12];
+        int day = daySpinner.getSelectedItemPosition();
         if (finalNumber > 0) {
             for (int i = 0; i < history.length - 1; i++) {
                 if (history[i] == 0) {
@@ -25,7 +33,7 @@ public class MarketLogic extends AppCompatActivity {
         }
 
 
-        public void isDecreasing (int finalNumber) {
+        public void isDecreasing(history) {
             int count = 0;
             for (int i = 1; i < history.length - 1; i++) {
                 if (history[i - 1] > history[1] && history[i] > history[i + 1]) {
@@ -38,7 +46,7 @@ public class MarketLogic extends AppCompatActivity {
             }
         }
 
-        public void isSpike (finalNumber) {
+        public void isSpike(finalNumber, history) {
             int count = 0;
             for (int i = 1; i < history.length - 1; i++) {
                 if (history[i - 1] > history[i] && history[i] > history[i + 1]) {

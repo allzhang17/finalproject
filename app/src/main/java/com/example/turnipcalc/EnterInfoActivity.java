@@ -50,6 +50,7 @@ public class EnterInfoActivity extends AppCompatActivity {
                     Toast.makeText(EnterInfoActivity.this, "8 a.m. to 11:59 a.m.",
                             Toast.LENGTH_SHORT).show();
 
+
                 }
             }
         });
