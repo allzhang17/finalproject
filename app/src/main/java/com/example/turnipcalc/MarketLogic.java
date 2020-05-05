@@ -1,81 +1,62 @@
 package com.example.turnipcalc;
+import android.os.Bundle;
+import android.widget.EditText;
 
-public class MarketLogic {
+import androidx.appcompat.app.AppCompatActivity;
 
-    public boolean isDecreasing(int[] input) {
-        int count = 0;
-        for (int i = 1; i < input.length - 1; i++) {
-            if (count == 6) {
-                return true;
-            }
-            if (input[i - 1] > input[1] && input[i] > input[i + 1]) {
-                count++;
-            }
-        }
-        return false;
+public class MarketLogic extends AppCompatActivity {
+    private EditText currentSubmit;
 
-    }
-
-    public boolean isSpike(int[] input) {
-        int count = 0;
-        for (int i = 1; i < input.length - 1; i++) {
-            if (input[i - 1] > input[i] && input[i] > input[i + 1]) {
-                for (int j = i + 1; j < input.length - 1; j++) {
-                    if (count == 2) {
-                        return true;
-                    }
-                    if (input[j + 1] > input[j] && input[j] > input[j - 1]) {
-                        count++;
-                    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.logic_market);
+        currentSubmit = findViewById(R.id.editCurrent);
+        String inputNumber = currentSubmit.getText().toString();
+        int finalNumber = Integer.parseInt(inputNumber);
+        final int[] history;
+        history = new int[12];
+        if (finalNumber > 0) {
+            for (int i = 0; i < history.length - 1; i++) {
+                if (history[i] == 0) {
+                    history[i] = finalNumber;
                 }
             }
         }
-        return false;
-    }
 
-    public boolean largeSpike(int currentprice, int[] input) {
-        boolean a = isSpike(input);
-        if (a) {
-            if (currentprice > 200) {
-                return true;
-            }
-        }
-        return false;
-    }
 
-    public boolean smallSpike(int currentprice, int[] input) {
-        boolean a = largeSpike(currentprice, input);
-        if (!a) {
+        public void isDecreasing (int finalNumber) {
             int count = 0;
-            for (int i = 1; i < input.length - 1; i++) {
-                if (count == 3) {
-                    return true;
-                }
-                if (input[i - 1] < input[i] && input[i] < input[i + 1]) {
+            for (int i = 1; i < history.length - 1; i++) {
+                if (history[i - 1] > history[1] && history[i] > history[i + 1]) {
                     count++;
+                    if (count == 6) {
+                        System.out.println("Your price curve is decreasing");
+                        System.out.println("Sell your turnips now");
+                    }
                 }
             }
         }
-        return false;
-    }
 
-    public boolean toSell(int[] input, int currentprice) {
-        if (input[4] == 0) {
-            return false;
+        public void isSpike (finalNumber) {
+            int count = 0;
+            for (int i = 1; i < history.length - 1; i++) {
+                if (history[i - 1] > history[i] && history[i] > history[i + 1]) {
+                    count++;
+                    if (finalNumber > 200 && count == 2) {
+                        System.out.println("Your price curve is a large spike");
+                        System.out.println("Sell your turnips now");
+                    } else if (finalNumber > 100 && count == 3) {
+                        System.out.println("Your price curve is a small spike");
+                        System.out.println("Sell your turnips now");
+                    }
+                }
+            }
         }
-        if (input[11] == currentprice) {
-            return true;
-        }
-        if (isDecreasing(input)) {
-            return true;
-        } else if (largeSpike(currentprice, input)) {
-            return true;
-        } else if (smallSpike(currentprice, input)) {
-            return true;
-        } else if (currentprice > 125) {
-            return true;
-        }
-        return false;
     }
-
 }
+
+
+
+
+
