@@ -64,7 +64,7 @@ public class EnterInfoActivity extends AppCompatActivity {
         });
         purchasedInput = findViewById(R.id.editPurchased);
         currentInput = findViewById(R.id.editCurrent);
-        submitButton = (Button) findViewById(R.id.submit);
+        submitButton = findViewById(R.id.submit);
         result = findViewById(R.id.result);
 
         final String text1 = "Your price curve is decreasing";
