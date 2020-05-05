@@ -1,6 +1,8 @@
 package com.example.turnipcalc;
+import android.widget.EditText;
 
-public class MarketLogic {
-public int[] history = new int[12];
+import java.util.ArrayList;
+
+public class MarketLogic extends EnterInfoActivity {
 
 }
