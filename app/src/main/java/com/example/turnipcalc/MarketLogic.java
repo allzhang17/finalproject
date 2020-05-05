@@ -1,6 +1,4 @@
 package com.example.turnipcalc;
-import java.util.List;
-import java.util.ArrayList;
 
 public class MarketLogic {
 
@@ -49,7 +47,7 @@ public class MarketLogic {
         boolean a = largeSpike(currentprice, input);
         if (!a) {
             int count = 0;
-            for (int i = 1; i < input.length; i++) {
+            for (int i = 1; i < input.length - 1; i++) {
                 if (count == 3) {
                     return true;
                 }
@@ -61,11 +59,20 @@ public class MarketLogic {
         return false;
     }
 
-    public boolean isRandom(int currentprice, int[] input) {
-        boolean a = isDecreasing(input);
-        boolean b = largeSpike(currentprice, input);
-        boolean c = smallSpike(currentprice, input);
-        if (!a && !b && !c) {
+    public boolean toSell(int[] input, int currentprice) {
+        if (input[4] == 0) {
+            return false;
+        }
+        if (input[11] == currentprice) {
+            return true;
+        }
+        if (isDecreasing(input)) {
+            return true;
+        } else if (largeSpike(currentprice, input)) {
+            return true;
+        } else if (smallSpike(currentprice, input)) {
+            return true;
+        } else if (currentprice > 125) {
             return true;
         }
         return false;
