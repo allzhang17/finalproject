@@ -20,14 +20,23 @@ public class EnterInfoActivity extends AppCompatActivity {
     EditText purchasedInput;
     EditText currentInput;
     Button submitButton;
+    private EditText currentSubmit;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_info);
 
-        Spinner daySpinner = findViewById(R.id.daySpinner);
+        //calling the user input of editCurrent, which is the current turnip price
+        currentSubmit = (EditText) findViewById(R.id.editCurrent);
+        //changing the user input to a string
+        final String currentString = currentSubmit.getText().toString();
+        final String history[];
+        //creating the array to store each user input in
+        history = new String[12];
 
+        Spinner daySpinner = findViewById(R.id.daySpinner);
         ArrayAdapter<String> myAdapter = new ArrayAdapter<>(EnterInfoActivity.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.select));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -66,12 +75,24 @@ public class EnterInfoActivity extends AppCompatActivity {
 
                 showToast(pricePurchased);
                 showToast(currentPrice);
+
+                //if the user inputs a value, then the array will loop through and find the next empty index, then store that value in the array.
+                if (currentString.length() != 0 ) {
+                    for (int i = 0; i <= history.length; i++) {
+                        if (history[i].equals("")) {
+                            history[i] = currentString;
+                        }
+                    }
+
+                }
             }
         });
 
 
     }
+
     private void showToast(int inputText) {
         Toast.makeText(EnterInfoActivity.this, inputText, Toast.LENGTH_SHORT).show();
     }
+
 }
