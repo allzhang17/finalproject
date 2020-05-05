@@ -67,27 +67,33 @@ public class EnterInfoActivity extends AppCompatActivity {
         submitButton = findViewById(R.id.submit);
         result = findViewById(R.id.result);
 
-        final String text1 = "Your price curve is decreasing";
-        final String text2 = "Your price curve is increasing";
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                pricePurchased = Integer.valueOf(purchasedInput.getText().toString());
-                currentPrice = Integer.valueOf(currentInput.getText().toString());
-                if (pricePurchased > currentPrice && am.isChecked()) {
-                    result.setText(text1);
-                } else if (currentPrice > pricePurchased && pm.isChecked()) {
-                    result.setText(text2);
-                }
-
-                showToast(pricePurchased);
-                showToast(currentPrice);
+            public void onClick(View view) {
+                toSell();
             }
         });
 
 
     }
+    private void toSell() {
+        final String text1 = "Your price curve is decreasing";
+        final String text2 = "Your price curve is increasing";
+        final String text3 = "Try again.";
+        pricePurchased = Integer.valueOf(purchasedInput.getText().toString());
+        currentPrice = Integer.valueOf(currentInput.getText().toString());
+        if (pricePurchased > currentPrice && am.isChecked()) {
+            result.setText(text1);
+        } else if (currentPrice > pricePurchased && pm.isChecked()) {
+            result.setText(text2);
+        }
+        result.setText(text3);
+
+        showToast(pricePurchased);
+        showToast(currentPrice);
+    }
+
     private void showToast(int inputText) {
         Toast.makeText(EnterInfoActivity.this, inputText, Toast.LENGTH_SHORT).show();
     }
