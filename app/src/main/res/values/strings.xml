@@ -9,7 +9,9 @@
     <string name="turnip_calculator">turnip calculator</string>
     <string name="enter_info">enter info</string>
     <string name="submit">submit</string>
-    <string name="enter_a_number">enter a number</string>
+    <string name="enter_a_number">enter an integer</string>
+    <string name="result">result</string>
+    <string name="enter_an_integer">enter an integer</string>
 
     <string-array name="select">
         <item>monday</item>

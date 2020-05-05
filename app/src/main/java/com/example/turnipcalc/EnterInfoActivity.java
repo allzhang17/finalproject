@@ -2,49 +2,38 @@ package com.example.turnipcalc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.CheckBox;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class EnterInfoActivity extends AppCompatActivity {
 
+    int pricePurchased, currentPrice;
     TextView result;
-    EditText purchased;
-    EditText current;
-    String stringPurchased = purchased.getText().toString();
-    String stringCurrent = current.getText().toString();
+    EditText purchasedInput;
+    EditText currentInput;
+    Button submitButton;
 
     CheckBox am;
     CheckBox pm;
 
-    int pricePurchased, currentPrice;
-
-    Button submitButton;
-    private EditText currentSubmit;
-    String result_num;
-    int numCurrent, numPurchased;
-
-
+    float result_num;
+    int num1, num2;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_info);
-        result = (TextView) findViewById(R.id.result);
-        purchased = findViewById(R.id.editPurchased);
-        current = findViewById(R.id.editCurrent);
-
-
 
         Spinner daySpinner = findViewById(R.id.daySpinner);
+
         ArrayAdapter<String> myAdapter = new ArrayAdapter<>(EnterInfoActivity.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.select));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -72,30 +61,33 @@ public class EnterInfoActivity extends AppCompatActivity {
                 }
             }
         });
-
+        purchasedInput = (EditText) findViewById(R.id.editPurchased);
+        currentInput = (EditText) findViewById(R.id.editCurrent);
         submitButton = (Button) findViewById(R.id.submit);
+        result = findViewById(R.id.result);
+
+        final String text1 = "Your price curve is decreasing";
+        final String text2 = "Your price curve is increasing";
+
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pricePurchased = Integer.valueOf(purchasedInput.getText().toString());
+                currentPrice = Integer.valueOf(currentInput.getText().toString());
+                if (pricePurchased > currentPrice && am.isChecked()) {
+                    result.setText(text1);
+                } else if (currentPrice > pricePurchased && pm.isChecked()) {
+                    result.setText(text2);
+                }
 
                 showToast(pricePurchased);
                 showToast(currentPrice);
-
-                numCurrent = Integer.parseInt(stringCurrent);
-                numPurchased = Integer.parseInt(stringPurchased);
-                if (numCurrent > numPurchased) {
-                    result_num = "your price curve is decreasing, you should sell now";
-                    result.setText(result_num);
-                } else if (numPurchased > numCurrent) {
-                    result_num = "your price curve is increasing, you should wait to sell";
-                    result.setText(result_num);
-                }
-
             }
         });
+
+
     }
     private void showToast(int inputText) {
         Toast.makeText(EnterInfoActivity.this, inputText, Toast.LENGTH_SHORT).show();
     }
-
 }

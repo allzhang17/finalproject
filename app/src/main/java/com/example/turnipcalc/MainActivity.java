@@ -23,8 +23,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     private void goToInfoActivity() {
-        Intent intent = new Intent(MainActivity.this, EnterInfoActivity.class);
+        Intent intent = new Intent(this, EnterInfoActivity.class);
         startActivity(intent);
     }
 }
