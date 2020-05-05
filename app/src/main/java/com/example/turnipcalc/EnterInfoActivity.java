@@ -76,8 +76,7 @@ public class EnterInfoActivity extends AppCompatActivity {
                 showToast(pricePurchased);
                 showToast(currentPrice);
 
-                //if the user inputs a value, then the array will loop through and find the next
-                // empty index, then store that value in the array.
+                //if the user inputs a value, then the array will loop through and find the next empty index, then store that value in the array.
                 if (currentString.length() != 0 ) {
                     for (int i = 0; i <= history.length; i++) {
                         if (history[i].equals("")) {
