@@ -14,23 +14,26 @@ import android.widget.TextView;
 
 public class EnterInfoActivity extends AppCompatActivity {
 
-    int pricePurchased, currentPrice;
-    TextView result;
-    EditText purchasedInput;
-    EditText currentInput;
-    Button submitButton;
 
-    CheckBox am;
-    CheckBox pm;
 
     float result_num;
     int num1, num2;
+    int pricePurchased, currentPrice;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_info);
+
+
+        final TextView result;
+        final EditText purchasedInput;
+        final EditText currentInput;
+        Button submitButton;
+
+        final CheckBox am;
+        final CheckBox pm;
 
         Spinner daySpinner = findViewById(R.id.daySpinner);
 
@@ -67,34 +70,25 @@ public class EnterInfoActivity extends AppCompatActivity {
         submitButton = findViewById(R.id.submit);
         result = findViewById(R.id.result);
 
+        final String text1 = "Your price curve is decreasing";
+        final String text2 = "Your price curve is increasing";
+
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toSell();
+                pricePurchased = Integer.valueOf(purchasedInput.getText().toString());
+                currentPrice = Integer.valueOf(currentInput.getText().toString());
+                if (pricePurchased > currentPrice && am.isChecked()) {
+                    result.setText(text1);
+                } else if (currentPrice > pricePurchased && pm.isChecked()) {
+                    result.setText(text2);
+                }
+
             }
         });
 
 
     }
-    private void toSell() {
-        final String text1 = "Your price curve is decreasing";
-        final String text2 = "Your price curve is increasing";
-        final String text3 = "Try again.";
-        pricePurchased = Integer.valueOf(purchasedInput.getText().toString());
-        currentPrice = Integer.valueOf(currentInput.getText().toString());
-        if (pricePurchased > currentPrice && am.isChecked()) {
-            result.setText(text1);
-        } else if (currentPrice > pricePurchased && pm.isChecked()) {
-            result.setText(text2);
-        }
-        result.setText(text3);
-
-        showToast(pricePurchased);
-        showToast(currentPrice);
-    }
-
-    private void showToast(int inputText) {
-        Toast.makeText(EnterInfoActivity.this, inputText, Toast.LENGTH_SHORT).show();
-    }
+    
 }
